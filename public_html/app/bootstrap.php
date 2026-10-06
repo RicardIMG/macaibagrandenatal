@@ -11,11 +11,10 @@ define('UPLOAD_DIR', APP_ROOT . '/uploads');
 
 $configFile = APP_ROOT . '/config/config.php';
 if (!is_file($configFile)) {
-    http_response_code(503);
-    header('Content-Type: text/html; charset=utf-8');
-    echo '<!doctype html><meta charset="utf-8"><title>Configuração pendente</title>'
-       . '<p style="font-family:sans-serif;padding:2rem">Configuração pendente: crie o arquivo '
-       . '<code>config/config.php</code> a partir de <code>config/config.sample.php</code> (veja INSTALL.md).</p>';
+    // Primeira execução: assistente que cria o config.php, as tabelas e o administrador.
+    $GLOBALS['config'] = [];
+    require APP_DIR . '/lib/helpers.php';
+    require APP_DIR . '/setup-wizard.php';
     exit;
 }
 

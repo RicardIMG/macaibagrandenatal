@@ -6,7 +6,7 @@ Landing page institucional para apresentação de uma propriedade/terreno
 **Stack:** HTML5 + CSS + JavaScript puro · PHP 8 · MySQL — sem frameworks,
 sem build, sem Node em produção. Feita para hospedagem compartilhada (Hostinger).
 
-➡️ **Instalação passo a passo: [INSTALL.md](INSTALL.md)**
+➡️ **Instalação passo a passo: [INSTALL.md](INSTALL.md)** — envie os arquivos, crie o banco e abra o site: um assistente cria tabelas, administrador e `config.php`.
 
 ## Funcionalidades
 

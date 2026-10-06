@@ -34,6 +34,29 @@ macaibagrandenatal/
 
 ---
 
+## ⚡ Caminho rápido (recomendado)
+
+1. **Envie os arquivos** — passos 1 e 2 abaixo (extraia o `site.zip` direto na raiz do `public_html`).
+2. **Crie o banco MySQL** — passo 3 abaixo (anote nome do banco, usuário e senha, com o prefixo `u123456789_`).
+   **Não precisa importar nada no phpMyAdmin.**
+3. **Abra o site no navegador.** Como ainda não existe `config/config.php`, aparece a tela
+   **“Configurar o site”**. Preencha:
+   - host do banco (`localhost`), nome do banco, usuário e senha do banco;
+   - o e-mail e a senha que você quer usar no painel.
+4. Clique em **Instalar**. O sistema testa a conexão, cria as tabelas, cria o
+   administrador (senha salva só como hash) e grava o `config.php` sozinho.
+   A partir daí essa tela some para sempre.
+5. Ative o SSL (passo 7) e siga os testes dos passos 13 a 15.
+
+> Faça o passo 3 do caminho rápido logo após enviar os arquivos: enquanto o site não
+> estiver configurado, qualquer pessoa que abrir o endereço vê essa tela de instalação.
+
+Os passos 4, 5 e 8 abaixo descrevem a **instalação manual** (phpMyAdmin + edição do
+`config.php` + `/install/`) — use apenas se preferir ou se o assistente não puder gravar
+na pasta `config/`.
+
+---
+
 ## 1. Quais arquivos enviar
 
 Envie **o conteúdo** da pasta `public_html/` deste projeto — e não a pasta em si.
