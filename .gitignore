@@ -12,3 +12,4 @@ public_html/uploads/*
 Thumbs.db
 node_modules/
 tests/output/
+site.zip
