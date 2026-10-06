@@ -1,0 +1,14 @@
+# Configuração com credenciais — nunca versionar
+public_html/config/config.php
+
+# Arquivos enviados pelo painel
+public_html/uploads/*
+!public_html/uploads/.htaccess
+!public_html/uploads/index.html
+
+# Logs e temporários
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+tests/output/

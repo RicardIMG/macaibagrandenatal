@@ -1,0 +1,40 @@
+# =====================================================================
+#  Pasta de uploads: somente imagens podem ser servidas.
+#  Nenhum script (PHP, CGI etc.) é executado aqui.
+# =====================================================================
+Options -Indexes -ExecCGI
+
+# Desativa interpretadores
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .pht .phps .cgi .pl .py .sh .asp .aspx .jsp
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .pht .phps
+
+# Nega tudo...
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
+
+# ...exceto imagens
+<FilesMatch "(?i)^[a-z0-9\-]+\.(jpe?g|png|webp)$">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Allow from all
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Content-Security-Policy "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; sandbox"
+</IfModule>

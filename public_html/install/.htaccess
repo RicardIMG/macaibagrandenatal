@@ -1,0 +1,5 @@
+# Painel administrativo: nunca indexar
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+Options -Indexes
