@@ -32,10 +32,10 @@ function property_fields(): array
             'differentials' => ['label' => 'Diferenciais (um por linha)', 'type' => 'lines', 'max' => 5000, 'rows' => 5, 'placeholder' => "[PENDENTE] Um diferencial por linha"],
             'additional_info' => ['label' => 'Informações complementares', 'type' => 'textarea', 'max' => 8000, 'rows' => 4, 'placeholder' => '[PENDENTE] Outros dados relevantes'],
         ],
-        'Conheça a área (topográfico)' => [
+        'Conheça a área (planta da propriedade)' => [
             'topographic_title' => ['label' => 'Título da seção', 'type' => 'text', 'max' => 190, 'placeholder' => 'Ex.: Conheça a área'],
-            'topographic_text'  => ['label' => 'Texto da seção', 'type' => 'textarea', 'max' => 2000, 'rows' => 2, 'placeholder' => 'Texto de apoio ao levantamento topográfico'],
-            'topographic_alt'   => ['label' => 'Descrição da imagem topográfica', 'type' => 'text', 'max' => 255, 'placeholder' => 'Ex.: Levantamento topográfico do terreno'],
+            'topographic_text'  => ['label' => 'Texto da seção', 'type' => 'textarea', 'max' => 2000, 'rows' => 2, 'placeholder' => 'Texto de apoio à planta da área'],
+            'topographic_alt'   => ['label' => 'Descrição da imagem da planta', 'type' => 'text', 'max' => 255, 'placeholder' => 'Ex.: Planta da propriedade com perímetro e coordenadas'],
         ],
         'Chamada intermediária (CTA)' => [
             'mid_cta_title'  => ['label' => 'Título', 'type' => 'text', 'max' => 190, 'placeholder' => 'Ex.: Tem interesse nesta propriedade?'],
@@ -72,6 +72,13 @@ function property(): array
     if (!$row) {
         db_exec('INSERT INTO property (id) VALUES (1)');
         $row = db_one('SELECT * FROM property WHERE id = 1');
+    }
+    // Atualiza o texto padrão antigo (que chamava a imagem de "levantamento topográfico").
+    // Só troca se o texto ainda for exatamente o original; textos editados no painel são mantidos.
+    $legacyTopoText = 'Levantamento topográfico do terreno. Clique na imagem para ampliar e analisar os detalhes.';
+    if (($row['topographic_text'] ?? '') === $legacyTopoText) {
+        $row['topographic_text'] = 'Planta da propriedade com o perímetro da área, a identificação dos vértices, as coordenadas e os confrontantes. Clique na imagem para ampliar e analisar os detalhes.';
+        db_exec('UPDATE property SET topographic_text = ? WHERE id = 1', [$row['topographic_text']]);
     }
     foreach ($row as $k => $v) {
         $row[$k] = $v === null ? '' : (string) $v;

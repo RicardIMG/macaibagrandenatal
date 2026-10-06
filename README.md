@@ -15,7 +15,7 @@ sem build, sem Node em produção. Feita para hospedagem compartilhada (Hostinge
 - Seção “A propriedade” e bloco “Detalhes” (localização, município, estado, acesso,
   infraestrutura, vocação, informações urbanísticas, documentação, características,
   diferenciais, informações complementares) — **campos vazios não aparecem**
-- “Conheça a área”: topográfico em destaque com lightbox em tela cheia,
+- “Conheça a área”: planta da propriedade em destaque com lightbox em tela cheia,
   zoom (roda do mouse, botões, pinça e duplo toque) e link para a versão em alta resolução
 - Galeria com lightbox (teclado, setas e gesto de deslizar)
 - CTA intermediário e formulário de interesse com validação (front e back),
@@ -32,7 +32,7 @@ sem build, sem Node em produção. Feita para hospedagem compartilhada (Hostinge
   paginação, detalhes, status, observações internas, botão **Chamar no WhatsApp**,
   exclusão (LGPD) e exportação CSV
 - Propriedade: todos os textos do site
-- Imagens: principal, topográfico e galeria (upload múltiplo, substituição,
+- Imagens: principal, planta da área e galeria (upload múltiplo, substituição,
   exclusão, ordenação por arrastar ou setas, legendas, categorias, texto alternativo)
 - Configurações: SEO, marca, privacidade, rodapé, imagem OG, favicon, e-mail e senha do admin
 

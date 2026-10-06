@@ -141,19 +141,19 @@ if (filled($p['area']) && mb_stripos($p['headline'], $p['area']) !== false) {
         </div>
     </section>
 
-    <!-- CONHEÇA A ÁREA / TOPOGRÁFICO -->
+    <!-- CONHEÇA A ÁREA / PLANTA DA PROPRIEDADE -->
     <section class="section topo" id="conheca-a-area" aria-labelledby="t-area">
         <div class="container">
             <div class="section-head">
-                <p class="section-label">Levantamento topográfico</p>
+                <p class="section-label">Planta da propriedade</p>
                 <h2 class="section-title" id="t-area"><?= e($p['topographic_title'] ?: 'Conheça a área') ?></h2>
                 <?php if (filled($p['topographic_text'])): ?><p class="section-text"><?= e($p['topographic_text']) ?></p><?php endif; ?>
             </div>
             <figure class="topo-figure">
                 <button type="button" class="topo-button" data-lightbox="topo" data-full="<?= e($topoFull) ?>"
-                        data-caption="<?= e($p['topographic_alt'] ?: 'Levantamento topográfico do terreno') ?>"
-                        aria-label="Ampliar o levantamento topográfico">
-                    <img src="<?= e($topoImg) ?>" alt="<?= e($p['topographic_alt'] ?: 'Levantamento topográfico do terreno') ?>" loading="lazy" decoding="async">
+                        data-caption="<?= e($p['topographic_alt'] ?: 'Planta da propriedade') ?>"
+                        aria-label="Ampliar a planta da propriedade">
+                    <img src="<?= e($topoImg) ?>" alt="<?= e($p['topographic_alt'] ?: 'Planta da propriedade') ?>" loading="lazy" decoding="async">
                     <span class="zoom-badge" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM15.5 15.5 20 20M10.5 7.5v6M7.5 10.5h6"/></svg>
                         Ampliar
@@ -163,7 +163,7 @@ if (filled($p['area']) && mb_stripos($p['headline'], $p['area']) !== false) {
                     <?php if ($hasTopo): ?>
                         Toque ou clique para ampliar. <a href="<?= e($topoFull) ?>" target="_blank" rel="noopener">Abrir em alta resolução</a>
                     <?php else: ?>
-                        Imagem ilustrativa — o levantamento topográfico será disponibilizado em breve.
+                        Imagem ilustrativa — a planta da área será disponibilizada em breve.
                     <?php endif; ?>
                 </figcaption>
             </figure>

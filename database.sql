@@ -163,7 +163,7 @@ VALUES
    'Área total aproximada',
    'Uma área de aproximadamente 260.000 m², apresentada de forma reservada a interessados com real intenção de aquisição. As informações complementares são compartilhadas diretamente com nossa equipe.',
    'Conheça a área',
-   'Levantamento topográfico do terreno. Clique na imagem para ampliar e analisar os detalhes.',
+   'Planta da propriedade com o perímetro da área, a identificação dos vértices, as coordenadas e os confrontantes. Clique na imagem para ampliar e analisar os detalhes.',
    'Quero receber mais informações',
    'Tem interesse nesta propriedade?',
    'Preencha seus dados para que possamos entender seu interesse e apresentar as informações complementares da propriedade.',

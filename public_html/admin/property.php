@@ -21,7 +21,7 @@ $p = property();
 admin_header('Propriedade', 'property');
 ?>
 <p class="lead-text">Edite os textos exibidos no site. <strong>Campos vazios não aparecem na página</strong> — preencha apenas o que já estiver confirmado.
-As imagens (principal, topográfico e galeria) são gerenciadas em <a href="<?= e(url('admin/images.php')) ?>">Imagens</a>.</p>
+As imagens (principal, planta da área e galeria) são gerenciadas em <a href="<?= e(url('admin/images.php')) ?>">Imagens</a>.</p>
 
 <form method="post" class="stack-lg">
     <?= csrf_field() ?>

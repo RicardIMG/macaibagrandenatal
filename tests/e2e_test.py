@@ -185,7 +185,7 @@ with open(os.path.join(IMG, "hero.jpg"), "rb") as f:
 ok("Imagem principal atualizada" in r.text, "upload da imagem principal")
 with open(os.path.join(IMG, "topo.png"), "rb") as f:
     r = adm.post(BASE + "/admin/images.php", data={"csrf_token": c, "action": "topo_upload"}, files={"image": ("topo.png", f, "image/png")})
-ok("Imagem topográfica atualizada" in r.text, "upload do topográfico")
+ok("Planta da área atualizada" in r.text, "upload da planta da área")
 files = [("images[]", (n, open(os.path.join(IMG, n), "rb"), "image/" + ("webp" if n.endswith("webp") else "jpeg"))) for n in ["g1.jpg", "g2.jpg", "g3.webp"]]
 r = adm.post(BASE + "/admin/images.php", data={"csrf_token": c, "action": "gallery_upload", "tag": "Drone"}, files=files)
 ok("3 imagem(ns) adicionada(s)" in r.text, "upload múltiplo na galeria")

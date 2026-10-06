@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../app/admin.php';
 
-$tags = ['Aérea', 'Drone', 'Acesso', 'Vegetação', 'Topografia', 'Entorno', 'Mapa', 'Terreno'];
+$tags = ['Aérea', 'Drone', 'Acesso', 'Vegetação', 'Planta', 'Entorno', 'Mapa', 'Terreno'];
 
 /** POST maior que post_max_size chega vazio: avisa em vez de acusar CSRF. */
 if (request_is_post() && empty($_POST) && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) {
@@ -44,14 +44,14 @@ if (request_is_post()) {
                 update_property_images(['topographic_image' => $r['image'], 'topographic_full' => $r['full']]);
                 delete_media($p['topographic_image']);
                 delete_media($p['topographic_full']);
-                flash('success', 'Imagem topográfica atualizada.');
+                flash('success', 'Planta da área atualizada.');
                 break;
 
             case 'topo_remove':
                 update_property_images(['topographic_image' => null, 'topographic_full' => null]);
                 delete_media($p['topographic_image']);
                 delete_media($p['topographic_full']);
-                flash('success', 'Imagem topográfica removida.');
+                flash('success', 'Planta da área removida.');
                 break;
 
             case 'gallery_upload':
@@ -192,13 +192,13 @@ admin_header('Imagens', 'images');
     </section>
 
     <section class="card">
-        <h2>Topográfico</h2>
-        <p class="muted small">Levantamento / mapa topográfico. Envie na maior resolução disponível: a versão completa fica disponível para ampliação.</p>
+        <h2>Planta da área</h2>
+        <p class="muted small">Planta da propriedade exibida na seção “Conheça a área”. Envie na maior resolução disponível: a versão completa fica disponível para ampliação.</p>
         <div class="image-preview contain">
             <?php if ($p['topographic_image']): ?>
                 <img src="<?= e(media_url($p['topographic_image'])) ?>" alt="">
             <?php else: ?>
-                <div class="image-empty">Nenhum topográfico enviado — o site exibe uma ilustração marcada como “imagem ilustrativa”.</div>
+                <div class="image-empty">Nenhuma planta enviada — o site exibe uma ilustração marcada como “imagem ilustrativa”.</div>
             <?php endif; ?>
         </div>
         <form method="post" enctype="multipart/form-data" class="upload-form">
@@ -209,7 +209,7 @@ admin_header('Imagens', 'images');
         </form>
         <?php if ($p['topographic_image']): ?>
         <p class="small"><a href="<?= e(media_url($p['topographic_full'] ?: $p['topographic_image'])) ?>" target="_blank" rel="noopener">Abrir versão em alta resolução ↗</a></p>
-        <form method="post" data-confirm="Remover a imagem topográfica?">
+        <form method="post" data-confirm="Remover a planta da área?">
             <?= csrf_field() ?>
             <input type="hidden" name="action" value="topo_remove">
             <button type="submit" class="btn btn-link-danger">Remover imagem</button>

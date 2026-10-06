@@ -267,8 +267,8 @@ Para alterar: botão direito no item → **Permissions** (Permissões).
    Clique em **Chamar no WhatsApp** (abre a conversa, sem mensagem automática).
    Altere o **Status** para “Contato realizado”, escreva uma **observação** e salve.
 5. **Propriedade:** altere a headline, salve e recarregue o site — a nova headline deve aparecer.
-6. **Imagens:** envie a imagem principal, o topográfico e algumas fotos na galeria.
-   No site, clique no topográfico para ampliar (zoom com roda do mouse / pinça no celular).
+6. **Imagens:** envie a imagem principal, a planta da área e algumas fotos na galeria.
+   No site, clique na planta da área para ampliar (zoom com roda do mouse / pinça no celular).
 7. **Configurações:** ajuste título SEO, descrição, URL canônica
    (`https://seudominio.com.br/`), imagem de compartilhamento e favicon.
 8. Teste a segurança: em uma janela anônima, acesse
@@ -299,7 +299,7 @@ Depois dos testes, você pode excluir os leads de teste no próprio painel
 - [ ] HTTPS ativo e forçado
 - [ ] Pasta `install/` excluída
 - [ ] `debug` = `false` no `config.php`
-- [ ] Imagem principal, topográfico e galeria enviados
+- [ ] Imagem principal, planta da área e galeria enviados
 - [ ] Textos da propriedade revisados (campos vazios não aparecem no site)
 - [ ] Política de Privacidade revisada (Configurações → substituir os campos **[A DEFINIR]**)
 - [ ] URL canônica, título e descrição SEO configurados
