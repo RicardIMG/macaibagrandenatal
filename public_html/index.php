@@ -33,6 +33,12 @@ $hasTopo   = $p['topographic_image'] !== '';
 
 $hasDetails = $facts || $chars || $diffs || filled($p['additional_info']);
 $year = date('Y');
+
+// Destaca em dourado a área (ex.: "260.000 m²") quando ela aparece na headline.
+$headlineHtml = e($p['headline']);
+if (filled($p['area']) && mb_stripos($p['headline'], $p['area']) !== false) {
+    $headlineHtml = str_ireplace(e($p['area']), '<span class="hl">' . e($p['area']) . '</span>', $headlineHtml);
+}
 ?><!doctype html>
 <html lang="pt-BR">
 <head>
@@ -105,7 +111,7 @@ $year = date('Y');
         <div class="hero-shade"></div>
         <div class="container hero-content">
             <?php if (filled($p['hero_eyebrow'])): ?><p class="eyebrow reveal"><?= e($p['hero_eyebrow']) ?></p><?php endif; ?>
-            <?php if (filled($p['headline'])): ?><h1 class="hero-title reveal"><?= e($p['headline']) ?></h1><?php endif; ?>
+            <?php if (filled($p['headline'])): ?><h1 class="hero-title reveal"><?= $headlineHtml ?></h1><?php endif; ?>
             <?php if (filled($p['subheadline'])): ?><p class="hero-sub reveal"><?= e($p['subheadline']) ?></p><?php endif; ?>
             <?php if (filled($p['area'])): ?>
             <p class="hero-meta reveal">
@@ -114,7 +120,7 @@ $year = date('Y');
             </p>
             <?php endif; ?>
             <?php if (filled($p['hero_cta_text'])): ?>
-            <a href="#contato" class="btn btn-light reveal" data-scroll-to-form><?= e($p['hero_cta_text']) ?></a>
+            <a href="#contato" class="btn btn-gold reveal" data-scroll-to-form><?= e($p['hero_cta_text']) ?></a>
             <?php endif; ?>
         </div>
         <a href="#propriedade" class="scroll-hint" aria-label="Rolar para a apresentação"><span></span></a>
@@ -249,7 +255,7 @@ $year = date('Y');
         <div class="container cta-inner">
             <?php if (filled($p['mid_cta_title'])): ?><h2 id="t-cta" class="cta-title"><?= e($p['mid_cta_title']) ?></h2><?php endif; ?>
             <?php if (filled($p['mid_cta_text'])): ?><p class="cta-text"><?= e($p['mid_cta_text']) ?></p><?php endif; ?>
-            <?php if (filled($p['mid_cta_button'])): ?><a href="#contato" class="btn btn-light" data-scroll-to-form><?= e($p['mid_cta_button']) ?></a><?php endif; ?>
+            <?php if (filled($p['mid_cta_button'])): ?><a href="#contato" class="btn btn-gold" data-scroll-to-form><?= e($p['mid_cta_button']) ?></a><?php endif; ?>
         </div>
     </section>
     <?php endif; ?>

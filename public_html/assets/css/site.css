@@ -13,6 +13,8 @@
     --stone: #7d776c;
     --accent: #a88a5c;
     --accent-dark: #8a6f45;
+    --gold: #d9b26a;
+    --gold-hover: #e6c385;
     --line: rgba(20, 26, 23, .12);
     --line-light: rgba(255, 255, 255, .22);
     --error: #a23b2a;
@@ -190,45 +192,87 @@ button { font: inherit; color: inherit; }
 }
 @keyframes heroIn { to { transform: scale(1); } }
 .hero-shade {
+    /* Escurece fortemente o lado do texto: garante leitura sobre qualquer imagem (inclusive plantas claras) */
     background:
-        linear-gradient(180deg, rgba(10, 14, 12, .55) 0%, rgba(10, 14, 12, 0) 28%),
-        linear-gradient(0deg, rgba(10, 14, 12, .82) 0%, rgba(10, 14, 12, .35) 45%, rgba(10, 14, 12, .1) 70%);
+        linear-gradient(180deg, rgba(8, 12, 10, .75) 0%, rgba(8, 12, 10, 0) 22%),
+        linear-gradient(90deg, rgba(8, 12, 10, .94) 0%, rgba(8, 12, 10, .86) 38%, rgba(8, 12, 10, .5) 66%, rgba(8, 12, 10, .2) 100%),
+        linear-gradient(0deg, rgba(8, 12, 10, .7) 0%, rgba(8, 12, 10, 0) 45%);
+}
+@media (max-width: 860px) {
+    .hero-shade {
+        background:
+            linear-gradient(180deg, rgba(8, 12, 10, .8) 0%, rgba(8, 12, 10, .72) 30%, rgba(8, 12, 10, .86) 100%);
+    }
 }
 .hero-content {
     position: relative;
     padding-top: 140px;
     padding-bottom: clamp(72px, 12vh, 140px);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, .45);
 }
-.hero .eyebrow { color: rgba(246, 243, 238, .8); }
+.hero .eyebrow {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .26em;
+    display: inline-flex; align-items: center; gap: 14px;
+}
+.hero .eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
 .hero-title {
     font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(44px, 8.2vw, 112px);
+    font-weight: 500;
+    font-size: clamp(46px, 8.4vw, 116px);
     line-height: .98;
     letter-spacing: -.015em;
     margin: 0 0 28px;
     max-width: 14ch;
     text-wrap: balance;
+    color: #ffffff;
 }
+.hero-title .hl { color: var(--gold); white-space: nowrap; }
 .hero-sub {
-    font-size: clamp(17px, 1.7vw, 21px);
-    font-weight: 300;
-    line-height: 1.55;
-    max-width: 560px;
+    font-size: clamp(18px, 1.8vw, 23px);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 580px;
     margin: 0 0 32px;
-    color: rgba(246, 243, 238, .88);
+    color: #ffffff;
 }
 .hero-meta {
-    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px;
     margin: 0 0 40px;
     padding-top: 22px;
-    border-top: 1px solid var(--line-light);
-    max-width: 560px;
-    font-size: 14px;
-    letter-spacing: .04em;
-    color: rgba(246, 243, 238, .75);
+    border-top: 1px solid rgba(217, 178, 106, .55);
+    max-width: 580px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .85);
 }
-.hero-meta strong { font-family: var(--serif); font-weight: 500; font-size: 24px; color: var(--paper); letter-spacing: 0; }
+.hero-meta strong { font-family: var(--serif); font-weight: 600; font-size: 32px; color: var(--gold); letter-spacing: 0; text-transform: none; }
+
+/* Botão principal de destaque (dourado) */
+.btn-gold {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 14px;
+    min-height: 62px;
+    padding: 18px 36px;
+    text-shadow: none;
+    box-shadow: 0 12px 34px rgba(217, 178, 106, .35), 0 2px 6px rgba(0, 0, 0, .3);
+    transition: background-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.btn-gold::after { content: "→"; font-size: 18px; letter-spacing: 0; transition: transform .25s var(--ease); }
+.btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(217, 178, 106, .45), 0 2px 6px rgba(0, 0, 0, .3); }
+.btn-gold:hover::after { transform: translateX(4px); }
+@media (max-width: 480px) { .btn-gold { width: 100%; padding: 18px 20px; } }
+
+/* Cabeçalho sobre a imagem: botão de contato em dourado */
+.site-header:not(.is-solid) .nav-cta { color: var(--gold); border-color: var(--gold); font-weight: 600; }
+.site-header:not(.is-solid) .nav-cta:hover { background: var(--gold); color: var(--ink); }
+.site-header:not(.is-solid) .brand, .site-header:not(.is-solid) .nav a { text-shadow: 0 1px 12px rgba(0, 0, 0, .5); }
 
 .scroll-hint {
     position: absolute; right: var(--gutter); bottom: 40px;
