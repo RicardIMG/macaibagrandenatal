@@ -1,0 +1,19 @@
+# =====================================================================
+#  Usado SOMENTE quando o repositório inteiro é enviado ao servidor
+#  (ex.: deploy via Git da Hostinger ou upload do ZIP do GitHub).
+#  Encaminha todas as requisições para a pasta public_html/ do projeto
+#  e bloqueia os arquivos de desenvolvimento.
+# =====================================================================
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Arquivos do repositório que não podem ser acessados
+    RewriteRule ^(database\.sql|INSTALL\.md|README\.md|tests(/|$)|\.git) - [F,L]
+
+    # Tudo o mais é servido a partir de public_html/
+    RewriteCond %{REQUEST_URI} !/public_html/
+    RewriteRule ^(.*)$ public_html/$1 [L]
+</IfModule>

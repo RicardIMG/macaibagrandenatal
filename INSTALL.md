@@ -71,6 +71,13 @@ Passo a passo (hPanel → **Sites** → seu site → **Gerenciador de Arquivos**
 > Instalar em subpasta (ex.: `public_html/terreno/` → `seudominio.com.br/terreno/`)
 > também funciona sem alterações. Nesse caso, adapte os caminhos deste guia.
 
+> **Enviou o repositório inteiro?** (deploy via **Git** do hPanel, ou extraiu o
+> ZIP baixado do GitHub na raiz do `public_html`, ficando `public_html/public_html/index.php`)
+> Também funciona: o `.htaccess` da raiz do projeto encaminha os acessos para a pasta
+> `public_html/` interna e bloqueia `database.sql`, `INSTALL.md`, `README.md` e `tests/`.
+> Nesse formato, o `config.php` fica em `public_html/public_html/config/config.php`
+> e a pasta de uploads em `public_html/public_html/uploads/`.
+
 ## 3. Criar o banco MySQL na Hostinger
 
 hPanel → **Bancos de dados** → **Gerenciamento de banco de dados MySQL**:
@@ -283,6 +290,7 @@ Depois dos testes, você pode excluir os leads de teste no próprio painel
 |---|---|
 | “Configuração pendente” | O `config/config.php` não existe — passo 5. |
 | “Ocorreu um erro inesperado” | Geralmente credenciais do banco erradas. Para ver o detalhe, coloque temporariamente `'debug' => true` no `config.php`, recarregue, corrija e volte para `false`. |
+| **403 Forbidden** na página inicial | Não há `index.php` diretamente dentro do `public_html` do domínio (os arquivos ficaram em uma subpasta, ex.: `public_html/public_html/` ou `public_html/macaibagrandenatal-.../`). Abra o Gerenciador de Arquivos e mova o conteúdo para a raiz do `public_html` — ou envie o `site.zip` e extraia direto na raiz (passo 2). |
 | Erro 500 em todo o site | Um `.htaccess` corrompido no envio. Reenvie os `.htaccess` do projeto. |
 | Upload falha / “excede o limite” | Aumente `upload_max_filesize` e `post_max_size` (passo 12). |
 | “Muitas tentativas” no login | Aguarde 15 minutos (proteção contra força bruta). |

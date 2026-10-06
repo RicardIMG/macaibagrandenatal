@@ -25,7 +25,14 @@ function base_path(): string
     if ($file !== '' && strpos($file, $root) === 0) {
         $rel = str_replace('\\', '/', substr($file, strlen($root))); // ex.: /admin/index.php
         if ($rel !== '' && substr($script, -strlen($rel)) === $rel) {
-            return $base = rtrim(substr($script, 0, -strlen($rel)), '/');
+            $base = rtrim(substr($script, 0, -strlen($rel)), '/');
+            // Repositório inteiro no servidor: o .htaccess da raiz reescreve
+            // internamente para /public_html, que não aparece na URL visitada.
+            $reqPath = (string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+            if ($base !== '' && $reqPath !== $base && strpos($reqPath, $base . '/') !== 0) {
+                $base = (string) preg_replace('~/public_html$~', '', $base);
+            }
+            return $base;
         }
     }
     return $base = '';
