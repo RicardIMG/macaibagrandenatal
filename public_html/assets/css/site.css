@@ -319,7 +319,7 @@ button { font: inherit; color: inherit; }
 }
 
 /* ---------- Topográfico ---------- */
-.topo { background: var(--white); }
+.topo { background: var(--paper-2); }
 .topo-figure { margin: 0; }
 .topo-button {
     position: relative; display: block; width: 100%;
@@ -625,7 +625,7 @@ body.lb-open { overflow: hidden; }
 .legal .prose { color: var(--ink-soft); }
 
 /* ---------- Localização (Google Maps) ---------- */
-.location { background: var(--paper); }
+.location { background: var(--white); }
 .map-frame {
     position: relative; width: 100%; aspect-ratio: 16 / 8; min-height: 360px; max-height: 640px;
     border: 1px solid var(--line); background: var(--paper-2); overflow: hidden;

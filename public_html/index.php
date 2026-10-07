@@ -95,8 +95,8 @@ if (filled($p['area']) && mb_stripos($p['headline'], $p['area']) !== false) {
         <a class="brand" href="#topo"><?= e($siteName) ?></a>
         <nav class="nav" aria-label="Navegação principal">
             <a href="#propriedade">A propriedade</a>
-            <a href="#conheca-a-area">A área</a>
             <?php if ($map): ?><a href="#localizacao">Localização</a><?php endif; ?>
+            <a href="#conheca-a-area">A área</a>
             <?php if ($gallery): ?><a href="#galeria">Galeria</a><?php endif; ?>
             <a href="#contato" class="nav-cta" data-scroll-to-form>Contato</a>
         </nav>
@@ -144,6 +144,33 @@ if (filled($p['area']) && mb_stripos($p['headline'], $p['area']) !== false) {
         </div>
     </section>
 
+    <?php if ($map): ?>
+    <!-- LOCALIZAÇÃO (GOOGLE MAPS) -->
+    <section class="section location" id="localizacao" aria-labelledby="t-local">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-label">Google Maps</p>
+                <h2 class="section-title" id="t-local"><?= e($map['title']) ?></h2>
+                <?php if (filled($map['text'])): ?><p class="section-text"><?= e($map['text']) ?></p><?php endif; ?>
+            </div>
+            <div class="map-frame">
+                <iframe src="<?= e($map['embed']) ?>" title="Localização da propriedade no Google Maps"
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+            <div class="map-bar">
+                <p class="map-coords">
+                    <span>Coordenadas</span>
+                    <strong><?= e($map['lat']) ?>, <?= e($map['lng']) ?></strong>
+                </p>
+                <div class="map-actions">
+                    <a class="btn btn-outline" href="<?= e($map['open']) ?>" target="_blank" rel="noopener">Abrir no Google Maps</a>
+                    <a class="btn btn-dark" href="<?= e($map['route']) ?>" target="_blank" rel="noopener">Como chegar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
     <!-- CONHEÇA A ÁREA / PLANTA DA PROPRIEDADE -->
     <section class="section topo" id="conheca-a-area" aria-labelledby="t-area">
         <div class="container">
@@ -172,33 +199,6 @@ if (filled($p['area']) && mb_stripos($p['headline'], $p['area']) !== false) {
             </figure>
         </div>
     </section>
-
-    <?php if ($map): ?>
-    <!-- LOCALIZAÇÃO (GOOGLE MAPS) -->
-    <section class="section location" id="localizacao" aria-labelledby="t-local">
-        <div class="container">
-            <div class="section-head">
-                <p class="section-label">Google Maps</p>
-                <h2 class="section-title" id="t-local"><?= e($map['title']) ?></h2>
-                <?php if (filled($map['text'])): ?><p class="section-text"><?= e($map['text']) ?></p><?php endif; ?>
-            </div>
-            <div class="map-frame">
-                <iframe src="<?= e($map['embed']) ?>" title="Localização da propriedade no Google Maps"
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-            </div>
-            <div class="map-bar">
-                <p class="map-coords">
-                    <span>Coordenadas</span>
-                    <strong><?= e($map['lat']) ?>, <?= e($map['lng']) ?></strong>
-                </p>
-                <div class="map-actions">
-                    <a class="btn btn-outline" href="<?= e($map['open']) ?>" target="_blank" rel="noopener">Abrir no Google Maps</a>
-                    <a class="btn btn-dark" href="<?= e($map['route']) ?>" target="_blank" rel="noopener">Como chegar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
 
     <?php if ($hasDetails): ?>
     <!-- DETALHES -->
