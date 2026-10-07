@@ -186,5 +186,12 @@ INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
   ('privacy_text',     ''),
   ('lgpd_notice',      'Ao enviar seus dados, você concorda em ser contatado por nossa equipe para tratar exclusivamente sobre esta oportunidade.'),
   ('footer_text',      'Apresentação reservada. As informações desta página têm caráter informativo e não constituem oferta pública.'),
-  ('noindex_site',     '0')
+  ('noindex_site',     '0'),
+  ('map_lat',          '-5.880816'),
+  ('map_lng',          '-35.293365'),
+  ('map_link',         'https://maps.app.goo.gl/NswKX8wBaycpBT298'),
+  ('map_zoom',         '15'),
+  ('map_type',         'h'),
+  ('map_title',        'Localização'),
+  ('map_text',         'Localização exata da propriedade. Use o mapa para visualizar o entorno e os acessos.')
 ON DUPLICATE KEY UPDATE `setting_key` = `setting_key`;

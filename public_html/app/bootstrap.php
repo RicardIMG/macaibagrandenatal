@@ -40,6 +40,7 @@ require APP_DIR . '/lib/auth.php';
 require APP_DIR . '/lib/property.php';
 require APP_DIR . '/lib/leads.php';
 require APP_DIR . '/lib/images.php';
+require APP_DIR . '/lib/map.php';
 
 set_exception_handler(function (Throwable $e) {
     error_log('[app] ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());

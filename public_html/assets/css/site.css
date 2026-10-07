@@ -623,3 +623,25 @@ body.lb-open { overflow: hidden; }
 .legal-inner { max-width: 820px; }
 .legal h2 { font-family: var(--serif); font-weight: 500; font-size: 26px; margin: 40px 0 10px; }
 .legal .prose { color: var(--ink-soft); }
+
+/* ---------- Localização (Google Maps) ---------- */
+.location { background: var(--paper); }
+.map-frame {
+    position: relative; width: 100%; aspect-ratio: 16 / 8; min-height: 360px; max-height: 640px;
+    border: 1px solid var(--line); background: var(--paper-2); overflow: hidden;
+}
+.map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
+    padding-top: 22px;
+}
+.map-coords { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.map-coords span { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone); }
+.map-coords strong { font-family: var(--serif); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; }
+.map-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: var(--paper); }
+@media (max-width: 600px) {
+    .map-frame { aspect-ratio: 4 / 5; min-height: 0; }
+    .map-actions, .map-actions .btn { width: 100%; }
+}
